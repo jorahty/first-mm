@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: first-mm
+spec:
+  selector:
+    matchLabels:
+      app: first-mm
+  template:
+    metadata:
+      labels:
+        app: first-mm
+    spec:
+      containers:
+        - name: first-mm
+          image: jorahty/first-mm
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '250m'
+          ports:
+            - containerPort: 4000
