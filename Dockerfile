@@ -2,8 +2,9 @@ FROM node:alpine
 
 WORKDIR /app
 
-COPY src .
 COPY package.json .
+COPY src src/
+COPY public public/
 
 RUN npm install
 
