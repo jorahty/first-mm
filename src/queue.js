@@ -8,15 +8,18 @@ export default class Queue {
   }
 
   push(item) {
-    this.items.push(item);
-    this.#render();
+    if (!this.items.includes(item)) {
+      this.items.push(item);
+      this.#render();
+    }
   }
 
   remove(item) {
     const index = this.items.indexOf(item);
-    if (index === -1) return;
-    this.items.splice(index, 1);
-    this.#render();
+    if (index !== -1) {
+      this.items.splice(index, 1);
+      this.#render();
+    }
   }
 
   clear() {
@@ -26,6 +29,6 @@ export default class Queue {
   }
 
   #render() {
-    console.log(`[${this.items.map(() => '*').join()}]`);
+    console.log(`[${this.items.map(() => '•').join('')}]`);
   }
 }
